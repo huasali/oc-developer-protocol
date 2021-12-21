@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CryptUtil : NSObject
 
-+ (NSDictionary *)inputData;
-+ (NSDictionary *)outputData;
++ (NSMutableDictionary *)inputData;
++ (NSMutableDictionary *)outputData;
 /// 测试数据
 /// @param callback log回调
 + (void)cryptTest:(void(^)(NSString *log))callback;

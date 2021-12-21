@@ -25,6 +25,13 @@
     }
     return [NSData dataWithBytes:byte length:sizeof(byte)];
 }
++ (NSData *)randPaddingData:(int)count{
+    Byte byte[count];
+    for (int i = 0; i < count; i++) {
+        byte[i] = arc4random()%256;
+    }
+    return [NSData dataWithBytes:byte length:sizeof(byte)];
+}
 + (NSData *)subCountPaddingData:(NSData *)data{
     if (data.length > 0) {
         Byte *dataByte = (Byte *)data.bytes;
@@ -72,15 +79,18 @@
 }
 + (NSString *)bytesStringFromData:(NSData *)data{
     if (data) {
-        Byte *byte = (Byte *)[data bytes];
-        NSString *string = [NSString new];
-        for (int i=0; i<data.length; i++) {
-            NSString *tempStr = [NSString stringWithFormat:@"%02X",byte[i]];
-            string = [string stringByAppendingString:tempStr];
-        }
-        return string;
+        return [self bytesStringFromByte:(Byte *)[data bytes]];
     }
     return @"";
+}
++ (NSString *)bytesStringFromByte:(Byte *)byte{
+    NSString *string = [NSString new];
+    int count = sizeof(byte);
+    for (int i = 0; i < count;i++) {
+        NSString *tempStr = [NSString stringWithFormat:@"%02X",byte[i]];
+        string = [string stringByAppendingString:tempStr];
+    }
+    return string;
 }
 + (NSString *)stringFromData:(NSData *)data{
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -98,22 +108,23 @@
         for (NSString *key in data) {
             [tempDataArr addObject:[NSString stringWithFormat:@"%@:%@",key,[self logStringFromObject:data[key]]]];
         }
-        jsonString = [NSString stringWithFormat:@"{%@}",[tempDataArr componentsJoinedByString:@","]];
+        jsonString = [NSString stringWithFormat:@"{\n%@\n}",[tempDataArr componentsJoinedByString:@",\n"]];
     }
     else if ([data isKindOfClass:[NSArray class]]){
         NSMutableArray *tempDataArr = [NSMutableArray array];
         for (id object in data) {
             [tempDataArr addObject:[self logStringFromObject:object]];
         }
-        jsonString = [NSString stringWithFormat:@"(%@)",[tempDataArr componentsJoinedByString:@","]];
+        jsonString = [NSString stringWithFormat:@"(\n%@\n)",[tempDataArr componentsJoinedByString:@" , "]];
+    }
+    else if ([data isKindOfClass:[NSData class]]){
+        jsonString = [self bytesStringFromData:data];
     }
     else{
         jsonString = [NSString stringWithFormat:@"%@",data];
     }
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\0" withString:@""];
-    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-    jsonString = [jsonString stringByReplacingOccurrencesOfString:@" " withString:@""];
     return jsonString;
 }
 + (NSArray <Class> *)classesInfo{

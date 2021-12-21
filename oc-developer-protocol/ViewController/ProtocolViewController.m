@@ -6,6 +6,7 @@
 //
 
 #import "ProtocolViewController.h"
+#import "CryptHelper.h"
 
 @interface ProtocolViewController ()
 

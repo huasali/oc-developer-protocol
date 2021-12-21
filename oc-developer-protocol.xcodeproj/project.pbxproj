@@ -20,6 +20,7 @@
 		984B3968274F54F100037B52 /* CryptHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 984B3967274F54F100037B52 /* CryptHelper.m */; };
 		984B396B274F749900037B52 /* OTPCryptUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 984B396A274F749900037B52 /* OTPCryptUtil.m */; };
 		984B396E274F74D700037B52 /* CryptUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 984B396D274F74D700037B52 /* CryptUtil.m */; };
+		98FB00C72759F08200D51EFF /* DHCryptUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FB00C62759F08200D51EFF /* DHCryptUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		984B396A274F749900037B52 /* OTPCryptUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTPCryptUtil.m; sourceTree = "<group>"; };
 		984B396C274F74D700037B52 /* CryptUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptUtil.h; sourceTree = "<group>"; };
 		984B396D274F74D700037B52 /* CryptUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CryptUtil.m; sourceTree = "<group>"; };
+		98FB00C52759F08200D51EFF /* DHCryptUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHCryptUtil.h; sourceTree = "<group>"; };
+		98FB00C62759F08200D51EFF /* DHCryptUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHCryptUtil.m; sourceTree = "<group>"; };
 		D06B0455E73FE53A014466B5 /* Pods-oc-developer-protocol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oc-developer-protocol.release.xcconfig"; path = "Target Support Files/Pods-oc-developer-protocol/Pods-oc-developer-protocol.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +140,8 @@
 				984B3964274F3B7000037B52 /* AESCryptUtil.m */,
 				984B3969274F749900037B52 /* OTPCryptUtil.h */,
 				984B396A274F749900037B52 /* OTPCryptUtil.m */,
+				98FB00C52759F08200D51EFF /* DHCryptUtil.h */,
+				98FB00C62759F08200D51EFF /* DHCryptUtil.m */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				983C6DD9274B9A0B00FCE8A3 /* ViewController.m in Sources */,
 				983C6DD3274B9A0B00FCE8A3 /* AppDelegate.m in Sources */,
 				983C6DE4274B9A0F00FCE8A3 /* main.m in Sources */,
+				98FB00C72759F08200D51EFF /* DHCryptUtil.m in Sources */,
 				984B396B274F749900037B52 /* OTPCryptUtil.m in Sources */,
 				984B396E274F74D700037B52 /* CryptUtil.m in Sources */,
 				984B3962274F345600037B52 /* ProtocolViewController.m in Sources */,

@@ -13,65 +13,65 @@
 
 + (void)cryptTest:(void(^)(NSString *log))callback{
     //test1
-    callback(DataLog(@"------------test1------------"));
+    callback(@"------------test1------------");
     {
         NSData *data = [CryptHelper dataFromString:[[self inputData] valueForKey:@"data"]];
         NSData *key  = [CryptHelper dataFromBytesString:[[self inputData] valueForKey:@"key"]];
         NSData *iv   = [CryptHelper dataFromString:[[self inputData] valueForKey:@"iv"]];
-        callback(DataLog(@"data:%@",[CryptHelper bytesStringFromData:data]));
-        callback(DataLog(@"key:%@",[CryptHelper bytesStringFromData:key]));
-        callback(DataLog(@"iv:%@",[CryptHelper bytesStringFromData:iv]));
+        callback(StringFrom(@"data:%@",[CryptHelper bytesStringFromData:data]));
+        callback(StringFrom(@"key:%@",[CryptHelper bytesStringFromData:key]));
+        callback(StringFrom(@"iv:%@",[CryptHelper bytesStringFromData:iv]));
         NSData *encryptData = [self aescbcEncryptData:data key:key iv:iv];
-        callback(DataLog(@"encryptData:%@",[CryptHelper bytesStringFromData:encryptData]));
+        callback(StringFrom(@"encryptData:%@",[CryptHelper bytesStringFromData:encryptData]));
         NSData *decryptData = [self aescbcDecryptData:encryptData key:key iv:iv];
-        callback(DataLog(@"decryptData:%@",[CryptHelper bytesStringFromData:decryptData]));
+        callback(StringFrom(@"decryptData:%@",[CryptHelper bytesStringFromData:decryptData]));
         NSString *decryptString = [CryptHelper stringFromData:decryptData];
         callback([NSString stringWithFormat:@"decryptString:%@",decryptString]);
         if ([[[self inputData] valueForKey:@"data"] isEqualToString:decryptString]) {
-            callback(DataLog(@"Test Success"));
+            callback(StringFrom(@"Test Success"));
         }
         else{
-            callback(DataLog(@"Test failed"));
+            callback(StringFrom(@"Test failed"));
         }
     }
     //test2
-    callback(DataLog(@"------------test2------------"));
+    callback(StringFrom(@"------------test2------------"));
     {
         NSData *data = [CryptHelper dataFromString:[[self inputData] valueForKey:@"data"]];
         NSData *key  = [CryptHelper dataFromBytesString:[[self inputData] valueForKey:@"key"]];
-        callback(DataLog(@"data:%@",[CryptHelper bytesStringFromData:data]));
-        callback(DataLog(@"key:%@",[CryptHelper bytesStringFromData:key]));
+        callback(StringFrom(@"data:%@",[CryptHelper bytesStringFromData:data]));
+        callback(StringFrom(@"key:%@",[CryptHelper bytesStringFromData:key]));
         NSData *encryptData = [self aes128cbcEncryptData:data key:key];
-        callback(DataLog(@"encryptData:%@",[CryptHelper bytesStringFromData:encryptData]));
+        callback(StringFrom(@"encryptData:%@",[CryptHelper bytesStringFromData:encryptData]));
         NSData *decryptData = [self aes128cbcDecryptData:encryptData key:key];
-        callback(DataLog(@"decryptData:%@",[CryptHelper bytesStringFromData:decryptData]));
+        callback(StringFrom(@"decryptData:%@",[CryptHelper bytesStringFromData:decryptData]));
         NSString *decryptString = [CryptHelper stringFromData:decryptData];
         callback([NSString stringWithFormat:@"decryptString:%@",decryptString]);
         if ([[[self inputData] valueForKey:@"data"] isEqualToString:decryptString]) {
-            callback(DataLog(@"Test Success"));
+            callback(StringFrom(@"Test Success"));
         }
         else{
-            callback(DataLog(@"Test failed"));
+            callback(StringFrom(@"Test failed"));
         }
     }
     //test3
-    callback(DataLog(@"------------test3------------"));
+    callback(StringFrom(@"------------test3------------"));
     {
         NSData *data = [CryptHelper dataFromString:[[self inputData] valueForKey:@"data"]];
         NSData *key  = [CryptHelper dataFromBytesString:[[self inputData] valueForKey:@"key"]];
-        callback(DataLog(@"data:%@",[CryptHelper bytesStringFromData:data]));
-        callback(DataLog(@"key:%@",[CryptHelper bytesStringFromData:key]));
+        callback(StringFrom(@"data:%@",[CryptHelper bytesStringFromData:data]));
+        callback(StringFrom(@"key:%@",[CryptHelper bytesStringFromData:key]));
         NSData *encryptData = [self aes128cfbEncryptData:data key:key];
-        callback(DataLog(@"encryptData:%@",[CryptHelper bytesStringFromData:encryptData]));
+        callback(StringFrom(@"encryptData:%@",[CryptHelper bytesStringFromData:encryptData]));
         NSData *decryptData = [self aes128cfbDecryptData:encryptData key:key];
-        callback(DataLog(@"decryptData:%@",[CryptHelper bytesStringFromData:decryptData]));
+        callback(StringFrom(@"decryptData:%@",[CryptHelper bytesStringFromData:decryptData]));
         NSString *decryptString = [CryptHelper stringFromData:decryptData];
         callback([NSString stringWithFormat:@"decryptString:%@",decryptString]);
         if ([[[self inputData] valueForKey:@"data"] isEqualToString:decryptString]) {
-            callback(DataLog(@"Test Success"));
+            callback(StringFrom(@"Test Success"));
         }
         else{
-            callback(DataLog(@"Test failed"));
+            callback(StringFrom(@"Test failed"));
         }
     }
 }
